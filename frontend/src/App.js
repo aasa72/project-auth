@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Form } from './components/Form'
+    
 
 export const App = () => {
+  const [signUp, setSignUp] = useState();
+
+  const onFormSubmit = signUp => {
+    setSignUp (signUp)
+    }
   return (
     <div>
-      Find me in src/app.js!
+      <Form onFormSubmit={onFormSubmit}/>
     </div>
   )
 }
