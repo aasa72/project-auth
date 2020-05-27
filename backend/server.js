@@ -49,7 +49,7 @@ app.post('/users', async (req, res) => {
     const user = new User({ name, email, password: bcrypt.hashSync(password) })
     const saved = await user.save()
 
-    res.status(201).json({ id: saved._id, accessToken: saved.accessToken })
+    res.status(201).json({ userId: saved._id, accessToken: saved.accessToken })
   } catch(err) {
     res.status(401).json({ message: 'Could not create user', errors:err.errors})
   }
@@ -58,7 +58,7 @@ app.post('/users', async (req, res) => {
 // Example of checking if user is already authenticated
 app.get('/secrets', authenticateUser)
 app.get('/secrets', async (req, res) => {
-  res.json({ message: 'TEST!' })
+  res.json({ message: 'Super secret endpoint with your accesstoken and user id!' })
 })
 
 // Validate user trying to log in. if username and password is correct it will respond with userid and accesstoken for frontend to use later

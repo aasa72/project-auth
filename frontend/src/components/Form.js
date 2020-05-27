@@ -55,7 +55,6 @@ export const Form = () => {
   const dispatch = useDispatch();
 
   const accessToken = useSelector((store) => store.user.login.accessToken);
-  const userId = useSelector((store) => store.user.login.userId);
   const statusMessage = useSelector((store) => store.user.login.statusMessage);
   
   const [ name, setName ] = useState('');
@@ -119,28 +118,33 @@ export const Form = () => {
         <Paragraph>If you do not have an account, please sign up.</Paragraph>
         {/* Show errors if any */}
         {statusMessage && <p> {`${statusMessage}`} </p> }
-        <form>
+        <form onSubmit={(e) => handleSignup(e)}>
           <Input
             type = "text"
+            required
+            minLength={2}
+            maxLength={20}
             value = { name }
             placeholder = "name"
-            onChange={event => setName(event.target.value)}
+            onChange = {event => setName(event.target.value)}
             /><br/>
           <Input 
-            type = "email"
+            type="email"
+            required
+            minLength={3}
             value = { email }
             placeholder = "email"
-            onChange={event => setEmail(event.target.value)}
+            onChange = {event => setEmail(event.target.value)}
             /><br/>
           <Input 
-            type = "password"
+            type="password"
+            required
+            minLength={8}
             value = { password }
             placeholder = "password"
-            onChange={event => setPassword(event.target.value)}
+            onChange = {event => setPassword(event.target.value)}
             /><br/>
-          <Button 
-            type= "submit" 
-            onClick = {handleSignup}>
+          <Button type = "submit">
             Sign Up
           </Button>
         </form>
@@ -148,22 +152,21 @@ export const Form = () => {
       <Section>
         <Title>Log In</Title>
         <Paragraph>Log in to your account.</Paragraph>
-        <form>
+        <form onSubmit={(e) => handleLogin(e)}>
           <Input 
             type = "email"
             value = { email }
             placeholder ="email"
-            onChange={event => setEmail(event.target.value)}
+            onChange = {event => setEmail(event.target.value)}
             /><br/>
           <Input 
             type = "password"
             value = { password }
             placeholder = "password"
-            onChange={event => setPassword(event.target.value)}
+            onChange = {event => setPassword(event.target.value)}
             /><br/>
           <Button 
-            type= "submit" 
-            onClick = { handleLogin }>
+            type = "submit">
             Log In
           </Button>
         </form>

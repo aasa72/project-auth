@@ -27,6 +27,7 @@ const secretURL = "http://localhost:8080/secrets";
 export const Content = () => {
   const [message, setMessage] = useState()
   const accessToken = useSelector((store) => store.user.login.accessToken);
+  const userId = useSelector((store) => store.user.login.userId);
 
   useEffect (() => {
     fetch(secretURL, {
@@ -49,6 +50,8 @@ export const Content = () => {
   return (
     <article>
       <Title>{message}</Title>
+      <p>{`AccessToken: ${accessToken}`}</p>
+      <p>{`UserID: ${userId}`}</p>
       <Button
        type = "submit"
        onClick = { logout }
