@@ -68,7 +68,7 @@ app.post('/sessions', async (req, res) => {
   if(user && bcrypt.compareSync(req.body.password, user.password)) {
     res.json({ userId: user._id, accessToken: user.accessToken })
   } else {
-    res.json({notFound: true})
+    res.json({ message: "User not found", notFound: true})
   }
 })
 

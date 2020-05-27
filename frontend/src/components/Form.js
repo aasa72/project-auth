@@ -76,7 +76,7 @@ export const Form = () => {
   };
 
   const handleLoginFailed = (loginError) => {
-    const statusMessage = JSON.stringify(loginError);
+    const statusMessage = JSON.stringify(loginError.message);
     dispatch(user.actions.setStatusMessage({ statusMessage }));
     // Clear login values
     dispatch(user.actions.logout());
@@ -117,7 +117,8 @@ export const Form = () => {
       <Section>
         <Title>Sign Up</Title>
         <Paragraph>If you do not have an account, please sign up.</Paragraph>
-    {statusMessage && <p> {`${statusMessage}`} </p> }
+        {/* Show errors if any */}
+        {statusMessage && <p> {`${statusMessage}`} </p> }
         <form>
           <Input
             type = "text"

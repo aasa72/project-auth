@@ -34,7 +34,6 @@ export const Content = () => {
       headers: { Authorization: accessToken },
     })
     .then((res) => res.json())
-    // .then((json) => (console.log(json.message)))
     .then((json) => setMessage(json.message))
     .catch((error) => {
       console.error('Error:', error);

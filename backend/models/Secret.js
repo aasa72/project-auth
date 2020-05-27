@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 // Name, Password, CreatedAt, Email, AccessToken
-const Secret = mongoose.model('User', {
+const Secret = mongoose.model('Secret', {
   name:{
     type: String,
     unique: true,
