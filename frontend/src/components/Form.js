@@ -61,6 +61,9 @@ export const Form = () => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
 
+  const [ loginEmail, setLoginEmail ] = useState('');
+  const [ loginPassword, setLoginPassword ] = useState('');
+
   const handleLoginSuccess = (loginResponse) => {
     // For debugging only
     const statusMessage = JSON.stringify(loginResponse.message);
@@ -101,7 +104,7 @@ export const Form = () => {
 
     fetch(logInURL, {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email: loginEmail, password: loginPassword }),
       headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => res.json())
@@ -155,15 +158,15 @@ export const Form = () => {
         <form onSubmit={(e) => handleLogin(e)}>
           <Input 
             type = "email"
-            value = { email }
+            value = { loginEmail }
             placeholder ="email"
-            onChange = {event => setEmail(event.target.value)}
+            onChange = {event => setLoginEmail(event.target.value)}
             /><br/>
           <Input 
             type = "password"
-            value = { password }
+            value = { loginPassword }
             placeholder = "password"
-            onChange = {event => setPassword(event.target.value)}
+            onChange = {event => setLoginPassword(event.target.value)}
             /><br/>
           <Button 
             type = "submit">

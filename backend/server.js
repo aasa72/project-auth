@@ -63,7 +63,7 @@ app.get('/secrets', async (req, res) => {
 
 // Validate user trying to log in. if username and password is correct it will respond with userid and accesstoken for frontend to use later
 app.post('/sessions', async (req, res) => {
-  const user = await User.findOne({ name: req.body.email })
+  const user = await User.findOne({ email: req.body.email })
 
   if(user && bcrypt.compareSync(req.body.password, user.password)) {
     res.json({ userId: user._id, accessToken: user.accessToken })
