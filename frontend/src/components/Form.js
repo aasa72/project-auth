@@ -4,8 +4,8 @@ import { user } from '../reducers/user';
 import { Content } from './Content';
 import styled  from 'styled-components'
 
-const signUpURL = "https://top-secret-auth-page.herokuapp.com/users";
-const logInURL = "https://top-secret-auth-page.herokuapp.com/sessions";
+const signUpURL = "https://top-secret-auth.herokuapp.com/users";
+const logInURL = "https://top-secret-auth.herokuapp.com/sessions";
 
 const Wrapper = styled.div`
 display: flex;

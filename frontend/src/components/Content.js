@@ -20,7 +20,7 @@ const Button = styled.button`
   border-radius: 2px;
 `
 
-const secretURL = "https://top-secret-auth-page.herokuapp.com/secrets";
+const secretURL = "https://top-secret-auth.herokuapp.com/secrets";
 
 
 
