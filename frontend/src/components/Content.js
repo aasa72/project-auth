@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { user } from '../reducers/user';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled  from 'styled-components'
 
 const Title = styled.h1`
@@ -20,7 +20,26 @@ const Button = styled.button`
   border-radius: 2px;
 `
 
+const secretURL = "http://localhost:8080/secrets";
+
+
+
 export const Content = () => {
+  const [message, setMessage] = useState()
+  const accessToken = useSelector((store) => store.user.login.accessToken);
+
+  useEffect (() => {
+    fetch(secretURL, {
+      method: 'GET',
+      headers: { Authorization: accessToken },
+    })
+    .then((res) => res.json())
+    // .then((json) => (console.log(json.message)))
+    .then((json) => setMessage(json.message))
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+  }, [])
 
   const dispatch = useDispatch();
   
@@ -30,7 +49,7 @@ export const Content = () => {
 
   return (
     <article>
-      <Title>Welcome</Title>
+      <Title>{message}</Title>
       <Button
        type = "submit"
        onClick = { logout }

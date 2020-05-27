@@ -64,7 +64,7 @@ export const Form = () => {
 
   const handleLoginSuccess = (loginResponse) => {
     // For debugging only
-    const statusMessage = JSON.stringify(loginResponse);
+    const statusMessage = JSON.stringify(loginResponse.message);
     dispatch(user.actions.setStatusMessage({ statusMessage }));
 
     // Set the login info
@@ -78,7 +78,6 @@ export const Form = () => {
   const handleLoginFailed = (loginError) => {
     const statusMessage = JSON.stringify(loginError);
     dispatch(user.actions.setStatusMessage({ statusMessage }));
-
     // Clear login values
     dispatch(user.actions.logout());
   };
@@ -118,6 +117,7 @@ export const Form = () => {
       <Section>
         <Title>Sign Up</Title>
         <Paragraph>If you do not have an account, please sign up.</Paragraph>
+    {statusMessage && <p> {`${statusMessage}`} </p> }
         <form>
           <Input
             type = "text"
