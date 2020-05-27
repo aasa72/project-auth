@@ -159,7 +159,6 @@ export const Form = () => {
             placeholder = "password"
             onChange = {event => setPassword(event.target.value)}
             /><br/>
-            {/* {statusMessage && <Paragraph> {`${statusMessage}`} </Paragraph> } */}
           <Button type = "submit">
             Sign Up
           </Button>
