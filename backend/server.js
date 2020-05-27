@@ -13,7 +13,7 @@ mongoose.Promise = Promise
 const port = process.env.PORT || 8080
 const app = express()
 
-Reset User database
+// Reset User database
 if (process.env.RESET_DATABASE) {
 
   const deleteDatabase = async () => {
