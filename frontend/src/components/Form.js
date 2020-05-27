@@ -49,6 +49,15 @@ const Paragraph = styled.p`
   padding: 10px;
   text-align: center;
 `
+const Warning = styled.section`
+display: flex;
+flex-direction: row;
+align-items: center;
+margin: 10px;
+padding:10px;
+font-size: 20px;
+background-color: Firebrick;
+`
 
 
 export const Form = () => {
@@ -60,7 +69,6 @@ export const Form = () => {
   const [ name, setName ] = useState('');
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
-
   const [ loginEmail, setLoginEmail ] = useState('');
   const [ loginPassword, setLoginPassword ] = useState('');
 
@@ -96,6 +104,9 @@ export const Form = () => {
       .then((res) => res.json())
       .then((json) => handleLoginSuccess(json))
       .catch((err) => handleLoginFailed(err));
+      setName('')
+      setEmail('')
+      setPassword('')
   };
 
   // Login handler
@@ -110,6 +121,8 @@ export const Form = () => {
       .then((res) => res.json())
       .then((json) => handleLoginSuccess(json))
       .catch((err) => handleLoginFailed(err));
+      setLoginEmail('')
+      setLoginPassword('')
   };
   
 
@@ -119,8 +132,7 @@ export const Form = () => {
       <Section>
         <Title>Sign Up</Title>
         <Paragraph>If you do not have an account, please sign up.</Paragraph>
-        {/* Show errors if any */}
-        {statusMessage && <p> {`${statusMessage}`} </p> }
+
         <form onSubmit={(e) => handleSignup(e)}>
           <Input
             type = "text"
@@ -147,11 +159,14 @@ export const Form = () => {
             placeholder = "password"
             onChange = {event => setPassword(event.target.value)}
             /><br/>
+            {/* {statusMessage && <Paragraph> {`${statusMessage}`} </Paragraph> } */}
+            {statusMessage && <Paragraph> {`${statusMessage}`} </Paragraph>}
           <Button type = "submit">
             Sign Up
           </Button>
         </form>
       </Section>
+      {statusMessage && <Warning> <Paragraph> {`${statusMessage}`} </Paragraph> </Warning>}
       <Section>
         <Title>Log In</Title>
         <Paragraph>Log in to your account.</Paragraph>
