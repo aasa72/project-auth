@@ -13,15 +13,15 @@ mongoose.Promise = Promise
 const port = process.env.PORT || 8080
 const app = express()
 
-// Reset User database
-// if (process.env.RESET_DATABASE) {
+Reset User database
+if (process.env.RESET_DATABASE) {
 
-//   const deleteDatabase = async () => {
-//       await User.deleteMany();
-//       console.log(`Deleting User databse`)
-//   };
-//   deleteDatabase();
-// }
+  const deleteDatabase = async () => {
+      await User.deleteMany();
+      console.log(`Deleting User databse`)
+  };
+  deleteDatabase();
+}
 
 // Authenticator function, later used on line 57 to only accept authorized user to the enpoint example.
 const authenticateUser = async (req, res, next) =>{
