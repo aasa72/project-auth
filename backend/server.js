@@ -5,6 +5,8 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcrypt-nodejs'
 import User from './models/User'
 
+const listEndpoints = require('express-list-endpoints')
+
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/authAPI"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
@@ -38,7 +40,7 @@ app.use(bodyParser.json())
 
 // Start defining your routes here
 app.get('/', (req, res) => {
-  res.send('')
+  res.send(listEndpoints(app))
 })
 
 // Registration endpoint using name, email and password to create user.
