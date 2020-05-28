@@ -1,13 +1,22 @@
 # Project Auth
 
-Replace this readme with your own information about your project.
+Creating a backend API and frontend using the endpoints to register new users, login users and get access authorized endpoint for registered users. Storing user information in mongoDB and use encryption on user sensetive data.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## The problem / Solution
 
-## The problem
+Using React and React Redux for dispatching actions. Using fetch for GET and POST to express endpoints. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+## Build with 
+
+List of all technologies and frameworks.
+* React
+* React Redux
+* Styled components
+* Node.js Express
+* MongoDB
+* bcrypt
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+[Frontend](https://heuristic-noether-cecc4a.netlify.app/)
+[Backend](https://top-secret-auth.herokuapp.com/)

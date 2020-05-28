@@ -29,7 +29,7 @@ const authenticateUser = async (req, res, next) =>{
     req.user = user
     next()
   } else {
-    res.status(401).json({loggetOut: true})
+    res.status(403).json({message: 'permission denied' ,loggetOut: true})
   }
 }
 
@@ -38,7 +38,7 @@ app.use(bodyParser.json())
 
 // Start defining your routes here
 app.get('/', (req, res) => {
-  res.send('Hello world')
+  res.send('')
 })
 
 // Registration endpoint using name, email and password to create user.
